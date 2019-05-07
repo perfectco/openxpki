@@ -44,6 +44,7 @@ Vagrant.configure("2") do |config|
       if File.exists?(File.expand_path('../../../packages.openxpki.org'))
           config.vm.synced_folder "../../../packages.openxpki.org", "/packages.openxpki.org"
       end
+      config.vagrant.plugins = ["vagrant-vbguest", "vagrant-scp"]
   end
 
   # development machine, share codetree, debian

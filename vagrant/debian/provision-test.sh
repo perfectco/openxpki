@@ -45,6 +45,15 @@ apt-get install --assume-yes libtest-deep-perl libtest-exception-perl
 a2enmod cgid
 a2enmod fcgid
 
+# mods we found necessary to get EST and SSL working --JimT
+ln -s /etc/apache2/mods-available/ssl.conf /etc/apache2/mods-enabled/
+ln -s /etc/apache2/mods-available/ssl.load /etc/apache2/mods-enabled/
+ln -s /etc/apache2/mods-available/socache_shmcb.load /etc/apache2/mods-enabled/
+ln -s /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-enabled/default-ssl.conf
+touch /var/log/openxpki/est.log
+chown www-data:openxpki /var/log/openxpki/est.log
+chmod 640 /var/log/openxpki/est.log
+
 service apache2 restart
 
 /vagrant/setup-dummy.sh
